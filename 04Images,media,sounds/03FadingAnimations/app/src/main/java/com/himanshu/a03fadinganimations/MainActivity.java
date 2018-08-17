@@ -12,8 +12,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView cartoon1 = findViewById(R.id.cartoon1);
 
 
-
-        cartoon1.animate().translationXBy(1000f).setDuration(2000 );
+        cartoon1.animate().rotation(1800f).setDuration(2000 );
 
 
     }
@@ -21,9 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView cartoon1 = findViewById(R.id.cartoon1);
 
-        cartoon1.animate().translationXBy(-1000f); //y is the vertical axis
 
 
     }
