@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView cartoon2 = findViewById(R.id.cartoon2);
 
-        cartoon1.animate().translationYBy(1000f).setDuration(2000 ); //y is the vertical axis
+        cartoon1.animate().translationXBy(-1000f).setDuration(2000 ); //y is the vertical axis
 
 
     }
