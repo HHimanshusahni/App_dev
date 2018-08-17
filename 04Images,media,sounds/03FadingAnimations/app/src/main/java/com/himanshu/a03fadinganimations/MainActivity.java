@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView cartoon1 = findViewById(R.id.cartoon1);
 
 
-        cartoon1.animate().rotation(1800f).setDuration(2000 );
+        cartoon1.animate().scaleX(0.5f).scaleY(0.5f).setDuration(2000 );
 
 
     }
