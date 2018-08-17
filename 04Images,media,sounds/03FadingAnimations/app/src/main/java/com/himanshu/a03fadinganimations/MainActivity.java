@@ -12,7 +12,11 @@ public class MainActivity extends AppCompatActivity {
         ImageView cartoon1 = findViewById(R.id.cartoon1);
 
 
-        cartoon1.animate().scaleX(0.5f).scaleY(0.5f).setDuration(2000 );
+        cartoon1.animate()
+                .translationXBy(1000f)
+                .translationYBy(1000f)
+                .rotationBy(3600)
+                .setDuration(2000 );
 
 
     }
@@ -21,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageView cartoon1 = findViewById(R.id.cartoon1);
+        cartoon1.setTranslationX(-1000f);
+        cartoon1.setTranslationY(-1000f);
 
 
     }
