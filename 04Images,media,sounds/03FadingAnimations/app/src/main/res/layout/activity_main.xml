@@ -19,7 +19,8 @@
         android:id="@+id/cartoon2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0"
+        android:alpha="0.2"
+        android:onClick="fade"
         app:srcCompat="@drawable/cartoon2"
         tools:layout_editor_absoluteX="80dp"
         tools:layout_editor_absoluteY="16dp" />
