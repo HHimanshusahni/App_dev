@@ -8,20 +8,21 @@
     tools:context=".MainActivity">
 
 
-
-<Button
-    android:text="PLAY"
-    android:id="@+id/btnPlay"
-    android:layout_width="0dp"
-    android:layout_weight="5"
-    android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:onClick="playAudio"
+        android:text="PLAY" />
 
     <Button
-        android:text="PAUSE"
         android:id="@+id/btnPause"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="5"
-        android:layout_height="wrap_content" />
+        android:onClick="pauseAudio"
+        android:text="PAUSE" />
 
 
 
