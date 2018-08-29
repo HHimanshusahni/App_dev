@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -14,6 +15,16 @@ import android.widget.TextView;
      SeekBar timeSeekBar;
      TextView tvTimer;
      Boolean counterIsActive  = false;
+     Button  btnController ;
+     CountDownTimer countDownTimer ;
+     public void resetTimer(){
+         tvTimer.setText("0:30");
+         timeSeekBar.setProgress(30);
+         countDownTimer.cancel();
+         btnController.setText("Go!");
+         timeSeekBar.setEnabled(true);
+         counterIsActive = false;
+     }
      public void updateTimer(int secondsLeft){
 
          int minutes = (int)secondsLeft /60;
@@ -29,27 +40,34 @@ import android.widget.TextView;
 
      }
      public void controlTimer(View view){
-         Log.d("Button presssed","Pressed");
+         if(counterIsActive == false) {
+             counterIsActive = true;
+             timeSeekBar.setEnabled(false);
+             btnController.setText("STOP");
 
-         new CountDownTimer(timeSeekBar.getProgress()*1000+100,1000) {
+            countDownTimer =  new CountDownTimer(timeSeekBar.getProgress() * 1000 + 100, 1000) {
 
 
-             @Override
-             public void onTick(long millisUntilFinished) {
+                 @Override
+                 public void onTick(long millisUntilFinished) {
 
-                 updateTimer((int)millisUntilFinished/1000);
-             }
+                     updateTimer((int) millisUntilFinished / 1000);
+                 }
 
-             @Override
-             public void onFinish() {
+                 @Override
+                 public void onFinish() {
 
-                 tvTimer.setText("0:00"); // otherwise it will remain at the 0:1
-                 MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.horn); // not this as it refers to countdowntimer
-                 mediaPlayer.start();
+                     resetTimer();
+                     MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.horn); // not this as it refers to countdowntimer
+                     mediaPlayer.start();
 
-                 Log.d("finished","timerdone");
-             }
-         }.start();
+                     Log.d("finished", "timerdone");
+                 }
+             }.start();
+
+         }else{
+                resetTimer();
+         }
      }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +80,8 @@ import android.widget.TextView;
 
         timeSeekBar.setMax(600);// 600 sec = 10 min
         timeSeekBar.setProgress(30);
+        btnController = (Button)findViewById(R.id.btnController);
+
 
 
 
