@@ -1,5 +1,6 @@
  package com.himanshu.a04eggtimerapp;
 
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
      SeekBar timeSeekBar;
      TextView tvTimer;
+     Boolean counterIsActive  = false;
      public void updateTimer(int secondsLeft){
 
          int minutes = (int)secondsLeft /60;
@@ -42,6 +44,9 @@ import android.widget.TextView;
              public void onFinish() {
 
                  tvTimer.setText("0:00"); // otherwise it will remain at the 0:1
+                 MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.horn); // not this as it refers to countdowntimer
+                 mediaPlayer.start();
+
                  Log.d("finished","timerdone");
              }
          }.start();
