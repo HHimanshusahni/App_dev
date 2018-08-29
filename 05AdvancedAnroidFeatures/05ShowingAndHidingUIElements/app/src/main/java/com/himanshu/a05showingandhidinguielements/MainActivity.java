@@ -18,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
         btnHide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textView.setAlpha(0.0f);
+                textView.setVisibility(View.INVISIBLE);
             }
         });
 
         btnShow.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-            textView.setAlpha(1.0f);
+            textView.setVisibility(View.VISIBLE);
 
             }
         });
