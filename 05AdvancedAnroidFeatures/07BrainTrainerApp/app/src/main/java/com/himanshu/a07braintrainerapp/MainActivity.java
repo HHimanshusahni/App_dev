@@ -1,9 +1,12 @@
 package com.himanshu.a07braintrainerapp;
 
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,12 +19,41 @@ public class MainActivity extends AppCompatActivity {
     TextView pointsTextView;
     Button button0,button1,button2,button3;
     TextView sumTextView;
+    TextView timerTextView;
+    Button playAgainButton;
+    RelativeLayout frameLayout;
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int locationofCorrectAnswer;
     int score = 0;
     int numberOfQuestions = 0;
 
 
+    public void playAgain(View view){
+        generateQuestion();
+        score = 0;
+        numberOfQuestions = 0;
+
+        timerTextView.setText("30s");
+        pointsTextView.setText("0/0");
+        resultTextView.setText("");
+
+        playAgainButton.setVisibility(View.INVISIBLE);
+        new CountDownTimer( 31000,1000){
+            @Override
+            public void onTick(long l) {
+                timerTextView.setText(String.valueOf(l/1000)+"s");
+
+            }
+
+            @Override
+            public void onFinish() {
+                playAgainButton.setVisibility(View.VISIBLE);
+                timerTextView.setText("0s");
+                resultTextView.setText("Your Score"+Integer.toString(score)+"/"+Integer.toString(numberOfQuestions));
+            }
+        }.start();
+
+    }
     public  void generateQuestion(){
 
         Random rand  = new Random();
@@ -74,7 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
     public  void start(View view){
         startButton.setVisibility(View.INVISIBLE);
+        frameLayout.setVisibility(frameLayout.VISIBLE);
 
+        playAgain(playAgainButton.findViewById(R.id.playAgainButton));
 
     }
 
@@ -92,7 +126,10 @@ public class MainActivity extends AppCompatActivity {
          button3 = (Button)findViewById(R.id.button3);
         resultTextView = (TextView)findViewById(R.id.resultTextView);
         pointsTextView = (TextView)findViewById( R.id.pointsTextView);
-        generateQuestion();
+        timerTextView = (TextView)findViewById(R.id.timerTextView);
+        playAgainButton = (Button) findViewById(R.id.playAgainButton);
+        frameLayout= (RelativeLayout)findViewById(R.id.frameLayout);
+
 
 
     }
