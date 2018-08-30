@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     TextView sumTextView;
     TextView timerTextView;
     Button playAgainButton;
-    RelativeLayout frameLayout;
+    RelativeLayout relativeLayout;
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int locationofCorrectAnswer;
     int score = 0;
@@ -106,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     public  void start(View view){
         startButton.setVisibility(View.INVISIBLE);
-        frameLayout.setVisibility(frameLayout.VISIBLE);
+        relativeLayout.setVisibility(relativeLayout.VISIBLE);
 
         playAgain(playAgainButton.findViewById(R.id.playAgainButton));
 
@@ -128,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         pointsTextView = (TextView)findViewById( R.id.pointsTextView);
         timerTextView = (TextView)findViewById(R.id.timerTextView);
         playAgainButton = (Button) findViewById(R.id.playAgainButton);
-        frameLayout= (RelativeLayout)findViewById(R.id.frameLayout);
+        relativeLayout = (RelativeLayout)findViewById(R.id.frameLayout);
 
 
 
